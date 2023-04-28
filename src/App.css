@@ -3,6 +3,11 @@
     background-color: aqua;
 }
 .bot-collection{
-   background-color: black;
-   height: 100vh;
+   margin: 3%;
+   padding:10px;
+}
+#bot-details {
+   display: flex;
+   padding: 3px;
+  justify-content:space-around; 
 }
