@@ -1,10 +1,7 @@
 .bot-army{
-    height: 50vh;
-    background-color: aqua;
-}
-.bot-collection{
-   margin: 3%;
-   padding:10px;
+    height: 65vh;
+    margin:2%;
+    background-color:rgba(189, 253, 59, 0.976);
 }
 #bot-details {
    display: flex;
