@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
+import SortBar from './SortBar'
 
 function RenderBots() {
 //create a state for the bots
@@ -28,10 +29,23 @@ const removeArmyHandler = (bot) => {
       })
 
   },[])
+
+  // Delete Bot
+  function handleDelete(id){
+    fetch(`http://localhost:3000/bots/${id}`,{
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    setBots(bots.filter((bot) => bot.id !== id));
+  }
+ 
   return(
-    <div>   
+    <div className='render-bots'>  
+    <SortBar bots={bots} setBots={setBots}/> 
     <YourBotArmy army={army} removeArmyHandler={removeArmyHandler}/>
-    <BotCollection  bots={bots} setArmyHandler={setArmyHandler}/>
+    <BotCollection  bots={bots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>
     </div>
   );
 }
