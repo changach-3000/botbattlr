@@ -1,21 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import SortBar from './SortBar'
 
-function BotCollection() {
-
-//create a state for the bots
-const [bots, setBots] =useState([])
-
-  // Get Bots and render them into bot collection
-    useEffect(()=>{
-        fetch("http://localhost:3000/bots")
-        .then(res => res.json())
-        .then(data=>{
-            setBots(data)
-        })
-
-    },[])
-
+function BotCollection({bots, setArmyHandler}) {
   return (
 
     <div className=' container my-5'>
@@ -25,7 +10,7 @@ const [bots, setBots] =useState([])
         {
           bots.map((bot)=>(
           <div key={bot.id} className="col-3 mb-4  mr-3 px-3">
-          <div className='border bg-light overflow-hidden'>
+          <div className='border bg-light overflow-hidden'  onClick={() => setArmyHandler(bot)}>
             <img src={bot.avatar_url} className='img-fluid ' alt='image loading...'/>
             <h5 style={{textAlign:'center',fontWeight:'bolder'}}>{bot.name}</h5>
             <p>{bot.catchphrase}</p>
