@@ -1,27 +1,17 @@
-import React,{useState,useEffect} from 'react'
+import React ,{useState} from 'react'
 
 function SortBar({bots,setBots}) {
-
-  const [ sorted, setsorted]=useState({sorted:"health",reversed:false});
+  const [sorted, setSorted] = useState([]);
   
-  function sortByCategory() {
-    const categoryCopy = [...bots];
-    categoryCopy.sort((bot1, bot2) => {
-      const categorynameA = `${bot1.category}`;
-      const categorynameB = `${bot2.category}`;
-      if (sorted.reversed) {
-        return categorynameB.localeCompare(categorynameA);
-      }
-      return categorynameA.localeCompare(categorynameB);
-    });
-    setBots(categoryCopy);
-    setsorted({ sorted: sorted.sorted, reversed: !sorted.reversed });
-
+const handleSort = () => {
+sorted = bots.sort((a, b) => (
+  a.name.localeCompare(b.name))
+)
+setSorted(sorted);
+setBots(setSorted)
 }
-
   return (
     <div>
-  
     </div>
   );
   }
