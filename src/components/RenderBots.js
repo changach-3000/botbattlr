@@ -55,11 +55,6 @@ const removeArmyHandler = (bot) => {
     <Route  path="bot/:id" element={<SingleBot handleDelete={handleDelete} setArmyHandler={setArmyHandler}/>}/>
      <Route path='/' element={<BotHome army={army} removeArmyHandler={removeArmyHandler}bots={bots} setBots={setBots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>}/>
   </Routes>
- 
-  
-  
-   
-   
     </div>
   );
 }
