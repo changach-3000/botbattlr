@@ -1,16 +1,41 @@
 import React,{useState,useEffect} from 'react'
 import SingleBot from './SingleBot'
 import {Link} from 'react-router-dom'
+import SortBar from './SortBar';
 
-function BotCollection({bots,handleDelete,setArmyHandler}) {
+function BotCollection({bots,setBots,handleDelete}) {
+  const [selectedClass, setSelectedClass] = useState('');
+
+  const handleClassChange = (e) => {
+    setSelectedClass(e.target.value);
+  };
+
+  const filteredBots = selectedClass
+    ? bots.filter((bot) => bot.bot_class === selectedClass)
+    : bots;
   return (
+<div>
+<div className='filterBar'>
+  <select value={selectedClass} onChange={handleClassChange}>
+    <option value=''>Filter By Class</option>
+    <option value='Support'>Support</option>
+    <option value='Medic'>Medic</option>
+    <option value='Assault'>Assault</option>
+    <option value='Defender'>Defender</option>
+    <option value='Captain'>Captain</option>
+    <option value='Witch'>Witch</option>
+  </select>
 
+</div>
+<div>
+  
+</div>
     <div className=' container my-5'>
     
      {/* render the bots in cards */}
     <div className=" row ">
         {
-          bots.map((bot)=>( 
+          filteredBots.map((bot)=>( 
           <div key={bot.id} className="col-3 mb-4  mr-3 px-3">
           <div className='border bg-light overflow-hidden'  >
           <Link to={`bot/${bot.id}`}>
@@ -22,9 +47,9 @@ function BotCollection({bots,handleDelete,setArmyHandler}) {
             {/* style the bot details */}
             <hr />
             <div id="bot-details">
-            <p>H:{bot.health}</p>
-            <p>D:{bot.damage}</p>
-            <p>A:{bot.armor}</p>
+            <p><i class="heartbeat icon"></i> {bot.health}</p>
+            <p><i class="icon lightning"></i>{bot.damage}</p>
+            <p><i class="icon shield"></i>{bot.armor}</p>
           </div>
           </div> 
           </div>
@@ -32,6 +57,7 @@ function BotCollection({bots,handleDelete,setArmyHandler}) {
           }
     </div>
     
+  </div>
   </div>
   )
         }
