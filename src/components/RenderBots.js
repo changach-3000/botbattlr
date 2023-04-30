@@ -2,6 +2,11 @@ import React,{useState,useEffect} from 'react'
 import BotCollection from './BotCollection'
 import YourBotArmy from './YourBotArmy'
 import SortBar from './SortBar'
+import SingleBot from './SingleBot'
+import {Routes,Route} from 'react-router-dom'
+
+
+
 
 function RenderBots() {
 //create a state for the bots
@@ -43,9 +48,16 @@ const removeArmyHandler = (bot) => {
  
   return(
     <div className='render-bots'>  
-    <SortBar bots={bots} setBots={setBots}/> 
-    <YourBotArmy army={army} removeArmyHandler={removeArmyHandler}/>
-    <BotCollection  bots={bots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>
+  <Routes>
+    <Route  path="bot/:id"
+          element={<SingleBot handleDelete={handleDelete} setArmyHandler={setArmyHandler}/>}/>
+  </Routes>
+  <YourBotArmy army={army} removeArmyHandler={removeArmyHandler}/>
+
+   <BotCollection  bots={bots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>
+  
+   
+   
     </div>
   );
 }
