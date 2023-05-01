@@ -1,6 +1,6 @@
 .bot-army{
     height: 65vh;
-    margin:1%;
+    margin: 1%;
     background-color:rgba(189, 253, 59, 0.976);
 }
 #bot-details {
@@ -14,4 +14,12 @@ select {
   border-radius: 5px;
   width:20%;
 
+}
+#sort-btn{
+  padding:10px;
+  justify-content: center;
+  align-items: center;
+  margin:3%;
+  border-radius: 10px;
+  border-color: chartreuse;
 }
