@@ -51,6 +51,7 @@ const removeArmyHandler = (bot) => {
     <div className='render-bots'>  
     <SortBar bots={bots} setBots={setBots}/>
   <Routes>
+    
     <Route  path="bot/:id" element={<SingleBot handleDelete={handleDelete} setArmyHandler={setArmyHandler}/>}/>
      <Route path='/' element={<BotHome army={army} removeArmyHandler={removeArmyHandler}bots={bots} setBots={setBots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>}/>
   </Routes>

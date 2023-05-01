@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import SingleBot from './SingleBot'
 import {Link} from 'react-router-dom'
 import SortBar from './SortBar';
 
@@ -32,7 +31,6 @@ function BotCollection({bots,setBots,handleDelete}) {
   
 </div>
     <div className=' container my-5'>
-    
      {/* render the bots in cards */}
     <div className=" row ">
         {
