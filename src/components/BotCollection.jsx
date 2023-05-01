@@ -3,6 +3,7 @@ import SingleBot from './SingleBot'
 import {Link} from 'react-router-dom'
 import SortBar from './SortBar';
 
+
 function BotCollection({bots,setBots,handleDelete}) {
   const [selectedClass, setSelectedClass] = useState('');
 
@@ -38,8 +39,9 @@ function BotCollection({bots,setBots,handleDelete}) {
           filteredBots.map((bot)=>( 
           <div key={bot.id} className="col-3 mb-4  mr-3 px-3">
           <div className='border bg-light overflow-hidden'  >
-          <Link to={`bot/${bot.id}`}>
+          
             <img src="https://img.icons8.com/tiny-color/16/null/close-window.png" onClick={()=> handleDelete(bot.id)}/>
+            <Link to={`bot/${bot.id}`}>
             <img src={bot.avatar_url} className='img-fluid ' alt='image loading...' />
             </Link>
             <h5 style={{textAlign:'center',fontWeight:'bolder'}}>{bot.name}</h5>
@@ -50,6 +52,7 @@ function BotCollection({bots,setBots,handleDelete}) {
             <p><i class="heartbeat icon"></i> {bot.health}</p>
             <p><i class="icon lightning"></i>{bot.damage}</p>
             <p><i class="icon shield"></i>{bot.armor}</p>
+            <p>{bot.bot_class}</p>
           </div>
           </div> 
           </div>
