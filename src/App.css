@@ -17,9 +17,8 @@ select {
 }
 #sort-btn{
   padding:10px;
-  justify-content: center;
-  align-items: center;
-  margin:3%;
   border-radius: 10px;
   border-color: chartreuse;
+  margin-left: 40%;
+  margin-top: 5px;
 }
