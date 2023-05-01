@@ -1,6 +1,4 @@
 import React,{useState,useEffect} from 'react'
-import BotCollection from './BotCollection'
-import YourBotArmy from './YourBotArmy'
 import SortBar from './SortBar'
 import SingleBot from './SingleBot'
 import BotHome from './BotHome'
@@ -8,16 +6,17 @@ import {Routes,Route} from 'react-router-dom'
 
 
 
-
 function RenderBots() {
 //create a state for the bots
-const [bots, setBots] =useState([])
+const [bots, setBots] =useState([]);
 const [army, setArmy] = useState([]);
 
 
 const setArmyHandler = (bot) => {
   const newArmy = army.filter((b) => b.id !== bot.id);
+  if(!army.some(army => army.bot_class === bot.bot_class))
   setArmy([...newArmy, bot]);
+  
   const newBots = bots.filter((b) => b.id !== bot.id);
   setBots(newBots);
 };
@@ -50,11 +49,12 @@ const removeArmyHandler = (bot) => {
  
   return(
     <div className='render-bots'>  
-   <SortBar bots={bots} setBots={setBots}/>
+    <SortBar bots={bots} setBots={setBots}/>
   <Routes>
     <Route  path="bot/:id" element={<SingleBot handleDelete={handleDelete} setArmyHandler={setArmyHandler}/>}/>
      <Route path='/' element={<BotHome army={army} removeArmyHandler={removeArmyHandler}bots={bots} setBots={setBots} setArmyHandler={setArmyHandler} handleDelete={handleDelete}/>}/>
   </Routes>
+  
     </div>
   );
 }
